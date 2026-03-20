@@ -2,7 +2,7 @@
 #include <stdbool.h>
 #include <gmp.h>
 #include <time.h>
-bool MillerRabin(mpz_t n);
+bool get_gcd(mpz_t tot, mpz_t e);
 int main(){
     gmp_randstate_t gmpRandState; //objeto que genera los numeros random (solo se declaro)
     unsigned long seed; // semilla para los numeros random
@@ -50,10 +50,11 @@ int main(){
 
     // Paso 4. Calcular exponente publico e
     // ahora, el exponente publico debe estar entre 1 < e < tot y gcd(e, p(n)) = 1
+    bool test;
     do{
         mpz_urandomm(e, gmpRandState, tot);
-        mpz_gcd(gcd, e, tot);
-    }while(mpz_cmp_ui(e, 0) == 0 || mpz_cmp_ui(gcd, 1) != 0);
+        test = get_gcd(tot, e);
+    }while(mpz_cmp_ui(e, 0) == 0 || test == 0 || mpz_cmp_ui(e, 1) == 0);
     // 
     // entonces ya tenemos e (exponente publico)
 
@@ -84,23 +85,31 @@ int main(){
     return 0;
 
 }
-/*
-int euclides(int p, int q){
-    int u = p;
-    int v = q;
-    int res;
-    while(v != 0){
-        res = u % v;
-        u = v;
-        v = res;
+
+
+bool get_gcd(mpz_t tot, mpz_t e){
+    mpz_t u;
+    mpz_t v;
+    mpz_t mod;
+    mpz_init(u);
+    mpz_init(v);
+    mpz_init(mod);
+    mpz_set(u, tot);
+    mpz_set(v, e);
+    while(mpz_cmp_ui(v, 0) != 0){
+        mpz_tdiv_r(mod, u, v);
+        mpz_set(u, v);
+        mpz_set(v, mod);
     }
-    return u;
+    bool result = mpz_cmp_ui(u, 1);
+    mpz_clear(mod);
+    mpz_clear(v);
+    mpz_clear(u);
+    if(!result) return true;
+    else return false;
 }
-bool check_prime(int p){
-    if(p < 2) return false;
-    for(int i = 2; i <= (p / 2); i++){ 
-        if(p % i == 0) return false;
-    }
-    return true;
-}
-*/
+
+
+
+
+
