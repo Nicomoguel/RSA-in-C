@@ -1,0 +1,20 @@
+# Compilados y ejecutables
+*.exe
+*.out
+rsa
+main
+
+# Archivos objeto y dependencias
+*.o
+*.d
+
+# Carpetas de build
+build/
+bin/
+out/
+
+# Editor
+.vscode/
+*.swp
+*.swo
+.DS_Store
