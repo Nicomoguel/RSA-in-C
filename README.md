@@ -38,5 +38,7 @@ pes-project/
 ```
 
 ## Pendientes
+```
  -organizar la estructura con los header files.
  -hacer las diapositivas para la presentacion final.
+ ```
