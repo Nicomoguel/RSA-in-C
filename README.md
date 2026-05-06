@@ -36,3 +36,7 @@ pes-project/
 └── Research-Docs-Sprint1/
     └── algoritmo_euclides.md       # Documentación del algoritmo GCD
 ```
+
+## Pendientes
+ -organizar la estructura con los header files.
+ -hacer las diapositivas para la presentacion final.
