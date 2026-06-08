@@ -15,4 +15,5 @@ int miller_rabin(ll n);
 ll power_mod(ll base, ll exp, ll mod);
 ll mul_mod(ll a, ll b, ll mod);
 void insertar(Nodo **lista, ll valor);
+void liberar(Nodo *nodo);
 #endif

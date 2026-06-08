@@ -73,6 +73,7 @@ int main(int argc, char *argv[]){
             break;
         
         case 'd':
+            liberar(lista);
             return 0;
             break;
         }

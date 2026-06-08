@@ -144,3 +144,12 @@ ll encriptar(ll m, ll e, ll n){
 ll desencriptar(ll c, ll d, ll n){
     return power_mod(c, d, n);
 }
+
+void liberar(Nodo *nodo){
+    Nodo *temp;
+    while(nodo != NULL){
+        temp = nodo;
+        nodo = nodo->sig;
+        free(temp);
+    }
+}
