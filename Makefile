@@ -1,8 +1,8 @@
 CC     = gcc
 CFLAGS = -Wall -Wextra
-LIBS   = -lgmp
+LIBS   = -lm
 TARGET = rsa
-SRCS   = main.c euclides.c
+SRCS   = main.c utils/algorithms.c utils/headers.c
 OBJS   = $(SRCS:.c=.o)
 
 all: $(TARGET)
